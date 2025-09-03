@@ -1,3 +1,12 @@
+## Documentation:
+# MSBA Group 10 (Daniel Robbins, Redemeer Gawu, Jessie Lin, Thirtha Poruthikode Unnivelan
+#2. Question/Story: (What are you trying to show and why?)
+#3. Data Choices: (Which tickers/series and time span, and why?)
+#4. Takeaway ((2–3 sentences): What should a reader notice?)
+
+
+
+
 # pip install yfinance pandas matplotlib
 
 import matplotlib.pyplot as plt
