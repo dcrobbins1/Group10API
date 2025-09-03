@@ -15,3 +15,8 @@ hist = ticker.history(period="1y")  # past 1 year
 print(hist.head())
 data = yf.download(["GOOG"], start="2022-01-01", end="2023-01-01")
 print(data.head())
+
+# labelling the plot
+plt.title("Apple vs. Google Stock Performance")
+plt.ylabel("Stock Price")
+plt.xlabel("Date") 
