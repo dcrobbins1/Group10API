@@ -40,7 +40,7 @@ for ticker in tickers:
 # Labels and title
 plt.xlabel("Date")
 plt.ylabel("Adjusted Closing Price (USD)")
-plt.title("FAANG Stock Prices (2024-09-03 to 2025-09-03)")
+plt.title("MAAG Stock Prices (2024-09-03 to 2025-09-03)")
 plt.legend()
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
