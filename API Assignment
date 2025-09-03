@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import yfinance as yf
 
 # Apple stock
-ticker = yf.Ticker("APPL")
+ticker = yf.Ticker("AAPL")
 hist = ticker.history(period="1y")  # past 1 year
 print(hist.head())
 data = yf.download(["AAPL"], start="2022-01-01", end="2023-01-01")
