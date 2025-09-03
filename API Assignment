@@ -1,2 +1,17 @@
 
-# test daniel
+pip install yfinance
+import yfinance as yf
+
+#Apple stock
+ticker = yf.Ticker("APPL")
+hist = ticker.history(period="1y")  # past 1 year
+print(hist.head())
+data = yf.download(["AAPL", "MSFT"], start="2022-01-01", end="2023-01-01")
+print(data.head())
+
+#Google stock
+ticker = yf.Ticker("GOOG")
+hist = ticker.history(period="1y")  # past 1 year
+print(hist.head())
+data = yf.download(["GOOG", "MSFT"], start="2022-01-01", end="2023-01-01")
+print(data.head())
