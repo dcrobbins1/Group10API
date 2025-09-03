@@ -1,4 +1,5 @@
 # pip install yfinance
+import matplotlib.pyplot as plt
 import yfinance as yf
 
 # Apple stock
