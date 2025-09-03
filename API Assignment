@@ -20,3 +20,7 @@ print(data.head())
 plt.title("Apple vs. Google Stock Performance")
 plt.ylabel("Stock Price")
 plt.xlabel("Date") 
+plt.grid(True)
+
+
+plt.show()
