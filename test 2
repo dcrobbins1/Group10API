@@ -1,0 +1,18 @@
+import matplotlib.pyplot as plt
+import yfinance as yf
+
+data = yf.download(["AAPL", "GOOG"], start="2022-01-01", end="2023-01-01")
+
+prices = data["Adj Close"]
+normalized = data/data.iloc[0] * 100
+
+plt.plot(normalized.index, normalized["AAPL"], label="Apple (AAPL)", color="blue")
+plt.plot(normalized.index, normalized["GOOG"], label="Google (GOOG)", color="red")
+
+# labeling the plot
+plt.title("Apple vs. Google Stock Performance")
+plt.ylabel("Stock Price")
+plt.xlabel("Date") 
+plt.grid(True)
+
+plt.show()
