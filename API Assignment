@@ -1,26 +1,38 @@
-# pip install yfinance
+# pip install yfinance pandas matplotlib
+
 import matplotlib.pyplot as plt
 import yfinance as yf
+from datetime import datetime, timedelta
 
-# Apple stock
-ticker = yf.Ticker("AAPL")
-hist = ticker.history(period="1y")  # past 1 year
-print(hist.head())
-data = yf.download(["AAPL"], start="2022-01-01", end="2023-01-01")
-print(data.head())
+# MAAG tickers (Google as GOOGL)
+tickers = ["META", "AAPL", "AMZN", "GOOGL"]
 
-# Google stock
-ticker = yf.Ticker("GOOG")
-hist = ticker.history(period="1y")  # past 1 year
-print(hist.head())
-data = yf.download(["GOOG"], start="2022-01-01", end="2023-01-01")
-print(data.head())
+# Date range: 2024-09-03 to 2025-09-03 (inclusive)
+start = "2024-09-03"
+end = "2025-09-03"
 
-# labelling the plot
-plt.title("Apple vs. Google Stock Performance")
-plt.ylabel("Stock Price")
-plt.xlabel("Date") 
-plt.grid(True)
+# Download all stock data at once
+data = yf.download(
+    tickers=tickers,
+    start=start,
+    end=end,
+    auto_adjust=True,
+    progress=False
+)
 
+# Extract closing prices only
+closes = data["Close"]
 
+# Plot the line graph
+plt.figure(figsize=(12, 6))
+for ticker in tickers:
+    plt.plot(closes.index, closes[ticker], label=ticker)
+
+# Labels and title
+plt.xlabel("Date")
+plt.ylabel("Adjusted Closing Price (USD)")
+plt.title("FAANG Stock Prices (2024-09-03 to 2025-09-03)")
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.tight_layout()
 plt.show()
