@@ -15,25 +15,30 @@ from datetime import datetime
 
 tickers = ["META", "AAPL", "AMZN", "GOOGL"]
 start = "2020-01-01"
-end_exclusive = datetime.fromisoformat("2021-01-01")  # inclusive through 2025-09-03
+end_exclusive = datetime.fromisoformat("2021-01-01")  # inclusive through 2020 Dec 31 
+#Decided to investigate top four American tech companies' stock prices, as they were affected by the COVID-19 pandemic.
 
 # Download and prep data
 data = yf.download(tickers=tickers, start=start, end=end_exclusive, auto_adjust=True, progress=False)
 closes = data["Close"][tickers].dropna(how="all")
 
-# Aggregate % day-over-day change
+# Aggregate the four companies' day-over-day percentage change in stock price.
 agg_pct = closes.sum(axis=1).pct_change() * 100
+# The purpose of this is to analyze the vulnerability of the market to extraneous events. 
 
-# Plot
+
+# Plot, we used dual-axis line graph to collectively reflect change in stock price in each respective company, as well as their aggregate percentage change
 fig, ax = plt.subplots(figsize=(12, 6))
 for t in tickers:
     ax.plot(closes.index, closes[t], label=t)
-
+# set up left y axis as stock price
 ax.set_xlabel("Date")
 ax.set_ylabel("Daily Closing Price (USD)")
 ax.set_title("MAAG Stock Prices & Aggregate Percentage Change")
 ax.grid(True, alpha=0.3)
 
+
+# Set up the right y axis as Aggregate Percentage of Change as %
 ax_r = ax.twinx()
 agg_line, = ax_r.plot(agg_pct.index, agg_pct, color="grey", linestyle="-", linewidth=2, label="Aggregate % Change")
 ax_r.set_ylabel("Aggregate Percentage of Change (%)")
@@ -43,6 +48,7 @@ handles = ax.get_lines() + [agg_line]
 labels = [h.get_label() for h in handles]
 ax.legend(handles, labels, loc="upper left", frameon=True)
 
+# We used a tight layout to ensure the graph fit into a screen. 
 plt.tight_layout()
 plt.show()
 
