@@ -1,7 +1,9 @@
 ## Documentation:
 # MSBA Group 10 (Daniel Robbins, Redemeer Gawu, Jessie Lin, Thirtha Poruthikode Unnivelan)
-#2. Question/Story: (What are you trying to show and why?) - Thirtha Poruthikode Unnivelan
-#3. Data Choices: (Which tickers/series and time span, and why?) - Thirtha Poruthikode Unnivelan
+#2. Question/Story: (What are you trying to show and why?)
+The goal of this analysis is to compare the stock performance of the “MAAG” group (Meta, Apple, Amazon, and Google) over the past year. These companies are some of the most influential tech giants in the market, and plotting their adjusted closing prices provides insight into how each company has moved individually as well as relative to one another. This helps show whether the group moves together as part of the broader tech sector trend or whether some companies have diverged in their performance.
+#3. Data Choices: (Which tickers/series and time span, and why?)
+The tickers we chose were "META", "AAPL", "AMZN", and "GOOG". We chose these tickers because they are widely regarded as leaders in the technology sector as well as drivers of the overall stock market. The time span we chose was one full year, from 9/3/2024 to 9/3/2025, because a one-year time horizon is long enough to capture meaningful stock movements, while still being recent and relevant.
 #4. Takeaway ((2–3 sentences): What should a reader notice?) - Redeemer Gawu
 
 
