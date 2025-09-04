@@ -7,43 +7,44 @@ The tickers we chose were "META", "AAPL", "AMZN", and "GOOG". We chose these tic
 #4. Takeaway ((2–3 sentences): What should a reader notice?(-from normal rates to extreme percent change, continued to change a lot over the rest of the year) - Redeemer Gawu
 
 
-
-
-# pip install yfinance pandas matplotlib
+# pip install yfinance matplotlib
 
 import matplotlib.pyplot as plt
 import yfinance as yf
-from datetime import datetime, timedelta
+from datetime import datetime
 
-# MAAG tickers (Google as GOOGL)
 tickers = ["META", "AAPL", "AMZN", "GOOGL"]
+start = "2020-01-01"
+end_exclusive = datetime.fromisoformat("2021-01-01")  # inclusive through 2025-09-03
 
-# Date range: 2024-09-03 to 2025-09-03 (inclusive)
-start = "2024-09-03"
-end = "2025-09-03"
+# Download and prep data
+data = yf.download(tickers=tickers, start=start, end=end_exclusive, auto_adjust=True, progress=False)
+closes = data["Close"][tickers].dropna(how="all")
 
-# Download all stock data at once
-data = yf.download(
-    tickers=tickers,
-    start=start,
-    end=end,
-    auto_adjust=True,
-    progress=False
-)
+# Aggregate % day-over-day change
+agg_pct = closes.sum(axis=1).pct_change() * 100
 
-# Extract closing prices only
-closes = data["Close"]
+# Plot
+fig, ax = plt.subplots(figsize=(12, 6))
+for t in tickers:
+    ax.plot(closes.index, closes[t], label=t)
 
-# Plot the line graph
-plt.figure(figsize=(12, 6))
-for ticker in tickers:
-    plt.plot(closes.index, closes[ticker], label=ticker)
+ax.set_xlabel("Date")
+ax.set_ylabel("Daily Closing Price (USD)")
+ax.set_title("MAAG Stock Prices & Aggregate Percentage Change")
+ax.grid(True, alpha=0.3)
 
-# Labels and title
-plt.xlabel("Date")
-plt.ylabel("Adjusted Closing Price (USD)")
-plt.title("MAAG Stock Prices (2024-09-03 to 2025-09-03)")
-plt.legend()
-plt.grid(True, alpha=0.3)
+ax_r = ax.twinx()
+agg_line, = ax_r.plot(agg_pct.index, agg_pct, color="grey", linestyle="-", linewidth=2, label="Aggregate % Change")
+ax_r.set_ylabel("Aggregate Percentage of Change (%)")
+ax_r.set_ylim(0, 25)
+
+handles = ax.get_lines() + [agg_line]
+labels = [h.get_label() for h in handles]
+ax.legend(handles, labels, loc="upper left", frameon=True)
+
 plt.tight_layout()
 plt.show()
+
+
+
