@@ -13,32 +13,34 @@ import matplotlib.pyplot as plt
 import yfinance as yf
 from datetime import datetime
 
+#For our analysis, we reviewed the top 4 American tech companies' stock prices and their movement during the COVID-19 pandemic. Here how we pulled data from January 1, 2020 to December 31, 2020.
 tickers = ["META", "AAPL", "AMZN", "GOOGL"]
 start = "2020-01-01"
-end_exclusive = datetime.fromisoformat("2021-01-01")  # inclusive through 2020 Dec 31 
-#Decided to investigate top four American tech companies' stock prices, as they were affected by the COVID-19 pandemic.
+end_exclusive = datetime.fromisoformat("2021-01-01")  # Dates inclusive through 2020 Dec 31. 
 
-# Download and prep data
+# Download and prepare data.
 data = yf.download(tickers=tickers, start=start, end=end_exclusive, auto_adjust=True, progress=False)
 closes = data["Close"][tickers].dropna(how="all")
 
-# Aggregate the four companies' day-over-day percentage change in stock price.
+# Aggregate the day-to-day percentage change in stock price from the four companies. 
+# The purpose of this is to analyze the vulnerability of the market to extraneous events.
 agg_pct = closes.sum(axis=1).pct_change() * 100
-# The purpose of this is to analyze the vulnerability of the market to extraneous events. 
-
-
-# Plot, we used dual-axis line graph to collectively reflect change in stock price in each respective company, as well as their aggregate percentage change
+ 
+# For our plot, we used a dual-axis line graph to collectively reflect change in stock price in each respective company, as well as their aggregate percentage change in stock price. 
 fig, ax = plt.subplots(figsize=(12, 6))
 for t in tickers:
     ax.plot(closes.index, closes[t], label=t)
-# set up left y axis as stock price
+
+# Set up the left y-axis as Stock Price.
 ax.set_xlabel("Date")
 ax.set_ylabel("Daily Closing Price (USD)")
+
+# Set title to "MAAG Stock Prices & Aggregate Percentage Change".
 ax.set_title("MAAG Stock Prices & Aggregate Percentage Change")
 ax.grid(True, alpha=0.3)
 
 
-# Set up the right y axis as Aggregate Percentage of Change as %
+# Set up the right y-axis as Aggregate Percentage of Change (%).
 ax_r = ax.twinx()
 agg_line, = ax_r.plot(agg_pct.index, agg_pct, color="grey", linestyle="-", linewidth=2, label="Aggregate % Change")
 ax_r.set_ylabel("Aggregate Percentage of Change (%)")
