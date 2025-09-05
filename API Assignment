@@ -1,4 +1,4 @@
-#AI Assistance: Used ChatGPT to help create the graph
+#AI Assistance: Used ChatGPT to help refine codes 
 ## Documentation:
 # MSBA Group 10 (Daniel Robbins, Redemeer Gawu, Jessie Lin, Thirtha Poruthikode Unnivelan)
 #2. Question/Story: (What are you trying to show and why?) - Thirtha
@@ -9,7 +9,7 @@
 #This sudden disruption showed how external shocks can quickly unsettle even the strongest companies. This was from normal rates to extreme percent change and continued to change a lot over the rest of the year) - Redeemer Gawu
 
 
-# pip install yfinance matplotlib
+# pip install yfinance matplotlib using terminal
 
 import matplotlib.pyplot as plt
 import yfinance as yf
@@ -38,13 +38,13 @@ ax.set_xlabel("Date")
 ax.set_ylabel("Daily Closing Price (USD)")
 
 # Set title to "MAAG Stock Prices & Aggregate Percentage Change".
-ax.set_title("MAAG Stock Prices & Aggregate Percentage Change")
+ax.set_title("MAAG Stock Prices & Aggregate Percentage Change in 2020")
 ax.grid(True, alpha=0.3)
 
 
 # Set up the right y-axis as Aggregate Percentage of Change (%).
 ax_r = ax.twinx()
-agg_line, = ax_r.plot(agg_pct.index, agg_pct, color="grey", linestyle="-", linewidth=2, label="Aggregate % Change")
+agg_line, = ax_r.plot(agg_pct.index, agg_pct, color="grey", linestyle="-", linewidth=2, label="Aggregate Percentage of Change")
 ax_r.set_ylabel("Aggregate Percentage of Change (%)")
 ax_r.set_ylim(0, 25)
 
@@ -52,9 +52,11 @@ handles = ax.get_lines() + [agg_line]
 labels = [h.get_label() for h in handles]
 ax.legend(handles, labels, loc="upper left", frameon=True)
 
-# We used a tight layout to ensure the graph fit into a screen. 
-plt.tight_layout()
-plt.show()
+# We add a note for source citation. 
+plt.figtext(0.5,0.01,"Source: Yahoo Finance",ha="center",fontsize=10,color="dimgray")
 
+# Ensure everything fits nicely
+plt.tight_layout(rect=[0, 0.03, 1, 1])
+plt.show()
 
 
