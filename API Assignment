@@ -6,7 +6,7 @@
 # 3. Data Choices: 
 # The tickers/series we chose were "META", "AAPL", "AMZN", and "GOOG". We chose these firms because they are widely regarded as leaders in the technology sector as well as drivers of the overall stock market. The time span we chose was from January 1, 2020 to December 31, 2020, because it captures the onset and early progression of the COVID-19 pandemic.
 # 4. Takeaway: 
-# In early 2020, the COVID-19 pandemic triggered sharp volatility in the stocks of Meta, Apple, Amazon and Google, with steep declines around March as uncertainty gripped global markets.  This sudden disruption showed how external shocks can quickly unsettle even the strongest companies. This was from normal rates to extreme percent change and continued to change a lot over the rest of the year 
+# In early 2020, the COVID-19 pandemic triggered sharp volatility in the stocks of Meta, Apple, Amazon and Google, with steep declines around March as uncertainty gripped global markets.  This sudden disruption showed how external shocks can quickly unsettle even the strongest companies. This was from normal rates to extreme percent change and continued to change a lot over the rest of the year. 
 
 
 # pip install yfinance matplotlib using terminal
