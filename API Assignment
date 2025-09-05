@@ -1,12 +1,12 @@
-# AI Assistance: Used ChatGPT to help refine codes 
+# AI Assistance: Used ChatGPT to help refine codes and assist in creating the dual-axis plot with percentage change.
 ## Documentation:
 # MSBA Group 10 (Daniel Robbins, Redemeer Gawu, Jessie Lin, Thirtha Poruthikode Unnivelan)
-# 2. Question/Story: (What are you trying to show and why?) - Thirtha
+# 2. Question/Story: 
 # The goal of this analysis is to examine how the stock prices of the “MAAG” group (Meta, Apple, Amazon, and Google) were impacted by COVID-19 during the first year of the pandemic. By plotting both the individual daily closing prices and the aggregate day-over-day percentage change, we can see how some of the most influential tech giants in the market responded to one of the largest external shocks to the global economy in recent history. The percent change specifically shows how although the prices went back to normal, the economy was must more volatile. The resilience of the tech sector compared to broader market trends reveals the comparative advantage they have as data-driven firms.
-# 3. Data Choices: (Which tickers/series and time span, and why?) - Thirtha
+# 3. Data Choices: 
 # The tickers/series we chose were "META", "AAPL", "AMZN", and "GOOG". We chose these firms because they are widely regarded as leaders in the technology sector as well as drivers of the overall stock market. The time span we chose was from January 1, 2020 to December 31, 2020, because it captures the onset and early progression of the COVID-19 pandemic.
-# 4. Takeaway ((2–3 sentences): What should a reader notice? (- In early 2020, the COVID-19 pandemic triggered sharp volatility in the stocks of Meta, Apple, Amazon and Google, with steep declines around March as uncertainty gripped global markets. 
-# This sudden disruption showed how external shocks can quickly unsettle even the strongest companies. This was from normal rates to extreme percent change and continued to change a lot over the rest of the year) - Redeemer Gawu
+# 4. Takeaway: 
+# In early 2020, the COVID-19 pandemic triggered sharp volatility in the stocks of Meta, Apple, Amazon and Google, with steep declines around March as uncertainty gripped global markets.  This sudden disruption showed how external shocks can quickly unsettle even the strongest companies. This was from normal rates to extreme percent change and continued to change a lot over the rest of the year 
 
 
 # pip install yfinance matplotlib using terminal
@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 import yfinance as yf
 from datetime import datetime
 
-#For our analysis, we reviewed the top 4 American tech companies' stock prices and their movement during the COVID-19 pandemic. Here how we pulled data from January 1, 2020 to December 31, 2020.
+# For our analysis, we reviewed the top 4 American tech companies' stock prices and their movement during the COVID-19 pandemic. Here how we pulled data from January 1, 2020 to December 31, 2020.
 tickers = ["META", "AAPL", "AMZN", "GOOGL"]
 start = "2020-01-01"
 end_exclusive = datetime.fromisoformat("2021-01-01")  # Dates inclusive through 2020 Dec 31. 
